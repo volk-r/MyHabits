@@ -21,7 +21,9 @@ class MainTabBarViewController: UITabBarController {
         let navigationControllerHabbits = UINavigationController(rootViewController: habbitsVC)
         let navigationControllerInfo = UINavigationController(rootViewController: infoVC)
         navigationControllerHabbits.navigationBar.isHidden = true
-
+        
+        UITabBar.appearance().tintColor = AppCoolors.purple
+        
         habbitsVC.tabBarItem.title = "Привычки"
         habbitsVC.tabBarItem.image = UIImage(systemName: "rectangle.grid.1x2.fill")
         

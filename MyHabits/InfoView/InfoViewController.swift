@@ -8,10 +8,17 @@
 import UIKit
 
 class InfoViewController: UIViewController {
+    
+    private let infoView = InfoView()
+    
+    override func loadView() {
+        super.loadView()
+        view = infoView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        navigationItem.title = "Информация"
     }
 
 }

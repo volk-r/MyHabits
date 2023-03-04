@@ -8,6 +8,8 @@
 import UIKit
 
 enum AppCoolors {
+    static let gray: UIColor = .systemGray
+    static let gray2: UIColor = .systemGray2
     static let white = UIColor(red: 242, green: 242, blue: 247)
     static let purple = UIColor(red: 161, green: 22, blue: 204)
     static let blue = UIColor(red: 41, green: 109, blue: 255)
