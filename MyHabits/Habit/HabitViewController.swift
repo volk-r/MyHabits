@@ -49,12 +49,13 @@ class HabitViewController: UIViewController {
     
     @objc private func saveAction() {
         print("save new habit")
-        // TODO: -
-//        let newHabit = Habit(name: "Выпить стакан воды перед завтраком",
-//                             date: Date(),
-//                             color: .systemRed)
-//        let store = HabitsStore.shared
-//        store.habits.append(newHabit)
+        guard let habitName = habitView.nameTextField.text, habitName != "" else { print("save failed"); return }
+        
+        let newHabit = Habit(name: habitName,
+                             date: habitView.datePicker.date,
+                             color: habitView.colorWell.selectedColor ?? AppCoolors.orange)
+        let store = HabitsStore.shared
+        store.habits.append(newHabit)
         
         dismiss(animated: true)
     }
