@@ -45,7 +45,7 @@ class InfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = AppCoolors.white
         setupLayout()
     }
     

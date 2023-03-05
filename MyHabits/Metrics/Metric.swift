@@ -14,4 +14,5 @@ enum Metric {
     static let addButtonTopAnchorInset: CGFloat = 10
     static let addButtonTrailingAnchorInset: CGFloat = -20
     
+    static let habitInset: CGFloat = 16
 }

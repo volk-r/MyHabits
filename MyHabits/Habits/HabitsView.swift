@@ -9,7 +9,7 @@ import UIKit
 
 class HabitsView: UIView {
     
-    private let addButton: UIButton = {
+    lazy var addButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(systemName: "plus")
@@ -21,7 +21,7 @@ class HabitsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = AppCoolors.white
         
         setupLayout()
     }

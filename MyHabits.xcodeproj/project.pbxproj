@@ -21,6 +21,9 @@
 		3C144B8B29B3B32D004DFFE6 /* HabitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144B8A29B3B32D004DFFE6 /* HabitsView.swift */; };
 		3C144B8E29B3B7F8004DFFE6 /* InfoViewText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144B8D29B3B7F8004DFFE6 /* InfoViewText.swift */; };
 		3C144B9129B3BADE004DFFE6 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144B9029B3BADE004DFFE6 /* Metric.swift */; };
+		3C144B9429B4A4F4004DFFE6 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144B9329B4A4F4004DFFE6 /* HabitViewController.swift */; };
+		3C144B9629B4A512004DFFE6 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144B9529B4A512004DFFE6 /* HabitView.swift */; };
+		3C144B9929B4BCF6004DFFE6 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144B9829B4BCF6004DFFE6 /* UITextField+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		3C144B8A29B3B32D004DFFE6 /* HabitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsView.swift; sourceTree = "<group>"; };
 		3C144B8D29B3B7F8004DFFE6 /* InfoViewText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewText.swift; sourceTree = "<group>"; };
 		3C144B9029B3BADE004DFFE6 /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
+		3C144B9329B4A4F4004DFFE6 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
+		3C144B9529B4A512004DFFE6 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
+		3C144B9829B4BCF6004DFFE6 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +82,9 @@
 				3C144B7B29B379EE004DFFE6 /* HabitsStore.swift */,
 				3C144B9229B3BAF6004DFFE6 /* Metrics */,
 				3C144B8F29B3B90D004DFFE6 /* Models */,
-				3C144B8C29B3B333004DFFE6 /* HabitsView */,
-				3C144B8729B3B14C004DFFE6 /* InfoView */,
+				3C144B8C29B3B333004DFFE6 /* Habits */,
+				3C144B9729B4A519004DFFE6 /* Habit */,
+				3C144B8729B3B14C004DFFE6 /* Info */,
 				3C144B8129B3843D004DFFE6 /* AppSettings */,
 				3C144B7529B3747B004DFFE6 /* Info.plist */,
 				3C144B7029B3747B004DFFE6 /* Assets.xcassets */,
@@ -101,26 +108,27 @@
 			isa = PBXGroup;
 			children = (
 				3C144B8229B38F3E004DFFE6 /* UIColor+Extension.swift */,
+				3C144B9829B4BCF6004DFFE6 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3C144B8729B3B14C004DFFE6 /* InfoView */ = {
+		3C144B8729B3B14C004DFFE6 /* Info */ = {
 			isa = PBXGroup;
 			children = (
 				3C144B7D29B38329004DFFE6 /* InfoViewController.swift */,
 				3C144B8829B3B1ED004DFFE6 /* InfoView.swift */,
 			);
-			path = InfoView;
+			path = Info;
 			sourceTree = "<group>";
 		};
-		3C144B8C29B3B333004DFFE6 /* HabitsView */ = {
+		3C144B8C29B3B333004DFFE6 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
 				3C144B6B29B3747A004DFFE6 /* HabitsViewController.swift */,
 				3C144B8A29B3B32D004DFFE6 /* HabitsView.swift */,
 			);
-			path = HabitsView;
+			path = Habits;
 			sourceTree = "<group>";
 		};
 		3C144B8F29B3B90D004DFFE6 /* Models */ = {
@@ -137,6 +145,15 @@
 				3C144B9029B3BADE004DFFE6 /* Metric.swift */,
 			);
 			path = Metrics;
+			sourceTree = "<group>";
+		};
+		3C144B9729B4A519004DFFE6 /* Habit */ = {
+			isa = PBXGroup;
+			children = (
+				3C144B9329B4A4F4004DFFE6 /* HabitViewController.swift */,
+				3C144B9529B4A512004DFFE6 /* HabitView.swift */,
+			);
+			path = Habit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,16 +226,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C144B9929B4BCF6004DFFE6 /* UITextField+Extension.swift in Sources */,
 				3C144B8329B38F3E004DFFE6 /* UIColor+Extension.swift in Sources */,
 				3C144B7C29B379EE004DFFE6 /* HabitsStore.swift in Sources */,
 				3C144B6C29B3747A004DFFE6 /* HabitsViewController.swift in Sources */,
 				3C144B9129B3BADE004DFFE6 /* Metric.swift in Sources */,
 				3C144B8B29B3B32D004DFFE6 /* HabitsView.swift in Sources */,
 				3C144B6829B3747A004DFFE6 /* AppDelegate.swift in Sources */,
+				3C144B9429B4A4F4004DFFE6 /* HabitViewController.swift in Sources */,
 				3C144B8029B383FC004DFFE6 /* MainTabBarViewController.swift in Sources */,
 				3C144B8629B38FF8004DFFE6 /* AppColors.swift in Sources */,
 				3C144B6A29B3747A004DFFE6 /* SceneDelegate.swift in Sources */,
 				3C144B8E29B3B7F8004DFFE6 /* InfoViewText.swift in Sources */,
+				3C144B9629B4A512004DFFE6 /* HabitView.swift in Sources */,
 				3C144B8929B3B1ED004DFFE6 /* InfoView.swift in Sources */,
 				3C144B7E29B38329004DFFE6 /* InfoViewController.swift in Sources */,
 			);
