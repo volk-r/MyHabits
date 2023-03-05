@@ -21,8 +21,8 @@ class HabitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         habitView.nameTextField.addTarget(self, action: #selector(textChanged), for: .editingDidEnd)
+//        habitView.datePicker?.addTarget(self, action: #selector(handleDateSelection), for: .valueChanged)
     }
     
     @objc func textChanged(_ textField: UITextField) {

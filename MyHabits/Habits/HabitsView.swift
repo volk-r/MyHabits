@@ -37,7 +37,7 @@ class HabitsView: UIView {
             addButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metric.addButtonTopAnchorInset),
             addButton.widthAnchor.constraint(equalToConstant: Metric.addButtonSize),
             addButton.heightAnchor.constraint(equalToConstant: Metric.addButtonSize),
-            addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: Metric.addButtonTrailingAnchorInset),
+            addButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Metric.addButtonTrailingAnchorInset),
         ])
     }
 
