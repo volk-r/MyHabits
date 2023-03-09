@@ -79,7 +79,16 @@ class HabitView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.text = "Каждый день в"
+        label.text = "Каждый день в "
+        
+        return label
+    }()
+    
+    var timeDescriptionValueLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor = AppCoolors.purple
         
         return label
     }()
@@ -89,6 +98,7 @@ class HabitView: UIView {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         datePicker.datePickerMode = .time
         datePicker.date = .now
+        datePicker.preferredDatePickerStyle = .wheels
         datePicker.timeZone = NSTimeZone.local
         datePicker.tintColor = AppCoolors.purple
         
@@ -115,6 +125,7 @@ class HabitView: UIView {
         contentView.addSubview(colorWell)
         contentView.addSubview(timeLabel)
         contentView.addSubview(timeDescriptionLabel)
+        contentView.addSubview(timeDescriptionValueLabel)
         contentView.addSubview(datePicker)
         
         NSLayoutConstraint.activate([
@@ -151,13 +162,15 @@ class HabitView: UIView {
             
             timeDescriptionLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: Metric.habitInset),
             timeDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.mainInset),
-//            timeDescriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
             
-            datePicker.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: Metric.habitInset / 2),
-            datePicker.leadingAnchor.constraint(equalTo: timeDescriptionLabel.trailingAnchor),
-//            datePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
+            timeDescriptionValueLabel.topAnchor.constraint(equalTo: timeDescriptionLabel.topAnchor),
+            timeDescriptionValueLabel.leadingAnchor.constraint(equalTo: timeDescriptionLabel.trailingAnchor),
+            timeDescriptionValueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
+            
+            datePicker.topAnchor.constraint(equalTo: timeDescriptionLabel.bottomAnchor, constant: Metric.mainInset),
+            datePicker.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            datePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
             datePicker.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Metric.mainInset),
-//            timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Metric.mainInset),
         ])
     }
     

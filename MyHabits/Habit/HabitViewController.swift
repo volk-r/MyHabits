@@ -16,13 +16,14 @@ class HabitViewController: UIViewController {
         view = habitView
         
         makeBarItem()
+        setTimeToLabel()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         habitView.nameTextField.addTarget(self, action: #selector(textChanged), for: .editingDidEnd)
-//        habitView.datePicker?.addTarget(self, action: #selector(handleDateSelection), for: .valueChanged)
+        habitView.datePicker.addTarget(self, action: #selector(handler), for: .valueChanged)
     }
     
     @objc func textChanged(_ textField: UITextField) {
@@ -33,6 +34,17 @@ class HabitViewController: UIViewController {
         print("button clicked")
 //        habitView.colorWell.backgroundColor = habitView.colorWell.selectedColor
 //        view.backgroundColor = habitView.colorButton.selectedColor
+    }
+    
+    @objc func handler() {
+        setTimeToLabel()
+    }
+    
+    private func setTimeToLabel() {
+        let timeFormatter = DateFormatter()
+        timeFormatter.timeStyle = DateFormatter.Style.short
+        let strDate = timeFormatter.string(from: habitView.datePicker.date)
+        habitView.timeDescriptionValueLabel.text = strDate
     }
     
     private func makeBarItem() {
