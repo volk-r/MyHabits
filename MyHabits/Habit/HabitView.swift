@@ -143,7 +143,7 @@ class HabitView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            nameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: Metric.habitInset),
+            nameLabel.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: Metric.habitTopInset),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.mainInset),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
             
@@ -151,7 +151,7 @@ class HabitView: UIView {
             nameTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.mainInset),
             nameTextField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
             
-            colorLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: Metric.habitInset),
+            colorLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: Metric.habitBlockInset),
             colorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.mainInset),
             colorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
             
@@ -160,7 +160,7 @@ class HabitView: UIView {
             colorWell.heightAnchor.constraint(equalToConstant: 40),
             colorWell.widthAnchor.constraint(equalToConstant: 40),
             
-            timeLabel.topAnchor.constraint(equalTo: colorWell.bottomAnchor, constant: Metric.habitInset),
+            timeLabel.topAnchor.constraint(equalTo: colorWell.bottomAnchor, constant: Metric.habitBlockInset),
             timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.mainInset),
             timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
             

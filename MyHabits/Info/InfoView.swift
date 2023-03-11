@@ -72,7 +72,7 @@ class InfoView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            headerLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metric.mainInset),
+            headerLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metric.infoHeaderTopInset),
             headerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.mainInset),
             headerLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
             headerLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
