@@ -26,7 +26,8 @@ class HabitView: UIView {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = AppFontSettings.footnoteUpperCase
+        label.textColor = AppFontSettings.footnoteUpperCaseColor
         label.text = "НАЗВАНИЕ"
         
         return label
@@ -38,8 +39,8 @@ class HabitView: UIView {
         nameTextField.placeholder = "Бегать по утрам, спать 8 часов и т.п."
         
         nameTextField.layer.backgroundColor = UIColor.systemGray6.cgColor
-        nameTextField.textColor = AppCoolors.blue
-        nameTextField.font = .systemFont(ofSize: 16, weight: .bold)
+        nameTextField.textColor = AppFontSettings.headlineColor
+        nameTextField.font = AppFontSettings.headline
         nameTextField.autocapitalizationType = .none
         
         nameTextField.delegate = self
@@ -50,7 +51,8 @@ class HabitView: UIView {
     private let colorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = AppFontSettings.footnoteUpperCase
+        label.textColor = AppFontSettings.footnoteUpperCaseColor
         label.text = "ЦВЕТ"
         
         return label
@@ -69,7 +71,8 @@ class HabitView: UIView {
     private let timeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = AppFontSettings.footnoteUpperCase
+        label.textColor = AppFontSettings.footnoteUpperCaseColor
         label.text = "ВРЕМЯ"
         
         return label
@@ -78,7 +81,8 @@ class HabitView: UIView {
     private let timeDescriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = AppFontSettings.body
+        label.textColor = AppFontSettings.bodyColor
         label.text = "Каждый день в "
         
         return label
@@ -87,7 +91,7 @@ class HabitView: UIView {
     var timeDescriptionValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = AppFontSettings.body
         label.textColor = AppCoolors.purple
         
         return label

@@ -26,7 +26,8 @@ class InfoView: UIView {
     private let headerLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = AppFontSettings.title3
+        label.textColor = AppFontSettings.title3Color
         label.text = "Привычка за 21 день"
         
         return label
@@ -35,7 +36,8 @@ class InfoView: UIView {
     private let textLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.font = AppFontSettings.body
+        label.textColor = AppFontSettings.bodyColor
         label.text = habitText
         label.numberOfLines = 0
         label.textAlignment = .justified
