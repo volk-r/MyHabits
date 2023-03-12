@@ -43,18 +43,61 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         return progressView
     }()
     
-    func setupCell(habbit: Habit) {
+    private var habitNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = AppFontSettings.headline
+        label.textColor = AppFontSettings.headlineColor
+        label.text = "Unknown"
+        
+        return label
+    }()
+    
+    private var habitTimeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = AppFontSettings.caption
+        label.textColor = AppFontSettings.captionColor
+        label.text = "Каждый день в ..."
+        
+        return label
+    }()
+    
+    private var habitCounterLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = AppFontSettings.footnote
+        label.textColor = AppFontSettings.footnoteColor
+        label.text = "Счетчик: n\\a"
+        
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         generalSettings()
-//        layout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupCell(habit: Habit) {
+        habitNameLabel.textColor = habit.color
+        habitNameLabel.text = habit.name
+        habitTimeLabel.text = habit.dateString
+        habitCounterLabel.text = "Счетчик: \(habit.trackDates.count)"
+        // TODO: - кружок цветной
+        layout()
     }
     
     func generalSettings() {
+        backgroundColor = AppCoolors.backgroundColor
         layer.cornerRadius = 10
         layer.masksToBounds = true
     }
     
     func setupProgressCell() {
-        generalSettings()
         layoutProgress()
     }
     
@@ -77,14 +120,24 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-//    func layout() {
-//        contentView.addSubview(cellImageView)
-//
-//        NSLayoutConstraint.activate([
-//            cellImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            cellImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            cellImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            cellImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//        ])
-//    }
+    func layout() {
+        contentView.addSubview(habitNameLabel)
+        contentView.addSubview(habitTimeLabel)
+        contentView.addSubview(habitCounterLabel)
+
+        NSLayoutConstraint.activate([
+            habitNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metric.habbitsCellectionViewCellInset),
+            habitNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.habbitsCellectionViewCellInset),
+//            habitNameLabel.widthAnchor.constraint(equalToConstant: Metric.habbitsCellectionViewCellHeaderWidth),
+//            habitNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//            habitNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            habitTimeLabel.topAnchor.constraint(equalTo: habitNameLabel.bottomAnchor, constant: Metric.habbitsCellectionViewInnerHeaderInset),
+            habitTimeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.habbitsCellectionViewCellInset),
+            
+            habitCounterLabel.topAnchor.constraint(equalTo: habitTimeLabel.bottomAnchor, constant: Metric.habbitsCellectionViewInnerInset),
+            habitCounterLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.habbitsCellectionViewCellInset),
+            habitCounterLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Metric.habbitsCellectionViewCellInset),
+        ])
+    }
 }

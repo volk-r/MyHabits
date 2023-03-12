@@ -19,7 +19,7 @@ class HabitsCollectionViewHeader: UICollectionReusableView {
     }()
     
     override init(frame: CGRect) {
-        super.init(frame: frame) 
+        super.init(frame: frame)
         backgroundColor = AppCoolors.backgroundHabitsViewColor
         
         layout()

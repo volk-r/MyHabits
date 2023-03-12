@@ -83,18 +83,17 @@ extension HabitsView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if (indexPath.item == 0) {
+        if (indexPath.item == 0) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitsCollectionViewCell.identifier, for: indexPath) as! HabitsCollectionViewCell
             cell.setupProgressCell()
-            cell.backgroundColor = AppCoolors.backgroundColor
 
             return cell
-//        }
+        }
 
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitsCollectionViewCell.identifier, for: indexPath) as! HabitsCollectionViewCell
-//        cell.setupCell(habbit: HabitsStore.shared.habits[indexPath.item])
-//
-//        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitsCollectionViewCell.identifier, for: indexPath) as! HabitsCollectionViewCell
+        cell.setupCell(habit: HabitsStore.shared.habits[indexPath.item - 1])
+
+        return cell
     }
     
 }
@@ -126,5 +125,13 @@ extension HabitsView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.width - sideInset, height: 40)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return Metric.habbitsCellectionViewMinimumInteritemSpacingForSection
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Metric.habbitsCellectionViewMinimumInteritemSpacingForSection
     }
 }

@@ -21,6 +21,11 @@ final class HabitsViewController: UIViewController {
         habitsView.addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
     }
     
+    override func viewWillLayoutSubviews () {
+        super.viewWillLayoutSubviews()
+        habitsView.habitsCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     @objc private func addAction () {
         let habbitVC = HabitViewController()
         let habbitController = UINavigationController(rootViewController: habbitVC)

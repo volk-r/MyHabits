@@ -31,9 +31,8 @@ final class HabitViewController: UIViewController {
     }
     
     @objc func colorWellChanged(_ sender: Any) {
-        print("button clicked")
-//        habitView.colorWell.backgroundColor = habitView.colorWell.selectedColor
-//        view.backgroundColor = habitView.colorButton.selectedColor
+        print("color selected")
+        habitView.colorWell.backgroundColor = habitView.colorWell.selectedColor
     }
     
     @objc func handler() {

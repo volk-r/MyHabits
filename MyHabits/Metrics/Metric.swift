@@ -26,6 +26,9 @@ enum Metric {
     static let habbitsCellectionViewLeadingAnchorInset: CGFloat = 16
     static let habbitsCellectionViewTrailingAnchorInset: CGFloat = 17
     
+    static let habbitsCellectionViewMinimumInteritemSpacingForSection: CGFloat = 12
+    static let habbitsCellectionViewMinimumLineSpacingForSectionFirst: CGFloat = 18
+    
     // MARK: - HabitsCollectionViewCell
     static let progressTopAnchorInset: CGFloat = 10
     static let progressSideInset: CGFloat = 12
@@ -34,4 +37,9 @@ enum Metric {
     
     // MARK: - HabitsCollectionViewHeader
     static let habbitsCellectionViewHeaderLabelInset: CGFloat = 14
+    // MARK: - HabitsCollectionViewCell
+    static let habbitsCellectionViewCellInset: CGFloat = 20
+    static let habbitsCellectionViewCellHeaderWidth: CGFloat = 220
+    static let habbitsCellectionViewInnerHeaderInset: CGFloat = 4
+    static let habbitsCellectionViewInnerInset: CGFloat = 8
 }
