@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HabitsView: UIView {
+final class HabitsView: UIView {
     
     lazy var addButton: UIButton = {
         let button = UIButton()
@@ -19,9 +19,25 @@ class HabitsView: UIView {
         return button
     }()
     
+    lazy var habitsCollectionView: UICollectionView = {
+        let collectionView = makeCollectionView(scrolllDirection: .vertical)
+        
+        collectionView.register(HabitsCollectionViewCell.self, forCellWithReuseIdentifier: HabitsCollectionViewCell.identifier)
+        
+        collectionView.register(HabitsCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HabitsCollectionViewHeader.identifier)
+        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout // casting is required because UICollectionViewLayout doesn't offer header pin. Its feature of UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = UIColor.clear.withAlphaComponent(0)
+        
+        return collectionView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = AppCoolors.white
+        backgroundColor = AppCoolors.backgroundHabitsViewColor
         
         setupLayout()
     }
@@ -32,13 +48,83 @@ class HabitsView: UIView {
     
     private func setupLayout() {
         addSubview(addButton)
+        addSubview(habitsCollectionView)
         
         NSLayoutConstraint.activate([
             addButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metric.addButtonTopAnchorInset),
             addButton.widthAnchor.constraint(equalToConstant: Metric.addButtonSize),
             addButton.heightAnchor.constraint(equalToConstant: Metric.addButtonSize),
             addButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: Metric.addButtonTrailingAnchorInset),
+            
+            habitsCollectionView.topAnchor.constraint(equalTo: addButton.bottomAnchor),
+            habitsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            habitsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            habitsCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 
+}
+
+extension HabitsView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        HabitsStore.shared.habits.count + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HabitsCollectionViewHeader.identifier, for: indexPath)
+            
+            return header
+
+        default:
+            return UICollectionReusableView()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if (indexPath.item == 0) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitsCollectionViewCell.identifier, for: indexPath) as! HabitsCollectionViewCell
+            cell.setupProgressCell()
+            cell.backgroundColor = AppCoolors.backgroundColor
+
+            return cell
+//        }
+
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitsCollectionViewCell.identifier, for: indexPath) as! HabitsCollectionViewCell
+//        cell.setupCell(habbit: HabitsStore.shared.habits[indexPath.item])
+//
+//        return cell
+    }
+    
+}
+
+extension HabitsView: UICollectionViewDelegateFlowLayout {
+    private var sideInset: CGFloat { return Metric.habbitsCellectionViewLeadingAnchorInset + Metric.habbitsCellectionViewTrailingAnchorInset }
+    private var elementCount: CGFloat { return CGFloat(HabitsStore.shared.habits.count + 1) }
+    private var insetCount: CGFloat { return elementCount + 1 }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var heigth: CGFloat = 130
+
+        if (indexPath.item == 0) {
+            heigth = 60
+        }
+
+        let width = collectionView.bounds.width - sideInset
+        return CGSize(width: width, height: heigth)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(
+            top: Metric.habbitsCellectionViewTopAnchorInset,
+            left: Metric.habbitsCellectionViewLeadingAnchorInset,
+            bottom: Metric.habbitsCellectionViewBottomAnchorInset,
+            right: Metric.habbitsCellectionViewTrailingAnchorInset
+        )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width - sideInset, height: 40)
+    }
 }

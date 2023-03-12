@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoView: UIView {
+final class InfoView: UIView {
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -47,7 +47,7 @@ class InfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = AppCoolors.white
+        backgroundColor = AppCoolors.backgroundColor
         setupLayout()
     }
     

@@ -8,6 +8,8 @@
 import UIKit
 
 enum AppCoolors {
+    static let backgroundHabitsViewColor: UIColor = UIColor(red: 242, green: 242, blue: 247, alpha: 1)
+    static let backgroundColor: UIColor = .white
     static let gray: UIColor = .systemGray
     static let gray2: UIColor = .systemGray2
     static let blackpacity50O: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)

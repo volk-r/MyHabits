@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HabitView: UIView {
+final class HabitView: UIView {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
