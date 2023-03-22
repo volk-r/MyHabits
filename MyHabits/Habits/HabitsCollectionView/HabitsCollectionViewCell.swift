@@ -73,9 +73,33 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private var checkBoxButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.setImage(UIImage(systemName: "checkmark"), for: .selected)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.borderWidth = 3
+        button.layer.cornerRadius = Metric.checkBoxButtonSize / 2
+        button.isUserInteractionEnabled = true
+        
+        return button
+    }()
+    
+    @objc func toggleCheckboxSelection() {
+        checkBoxButton.isSelected = !checkBoxButton.isSelected
+        
+        if (checkBoxButton.isSelected == true) {
+            checkBoxButton.layer.backgroundColor = checkBoxButton.layer.borderColor
+            checkBoxButton.tintColor = AppCoolors.backgroundColor
+        } else {
+            checkBoxButton.layer.backgroundColor = AppCoolors.backgroundColor.cgColor
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         generalSettings()
+        
+        checkBoxButton.addTarget(self, action: #selector(toggleCheckboxSelection), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -88,6 +112,15 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         habitTimeLabel.text = habit.dateString
         habitCounterLabel.text = "Счетчик: \(habit.trackDates.count)"
         // TODO: - кружок цветной
+        checkBoxButton.isSelected = habit.isAlreadyTakenToday
+        
+        if (checkBoxButton.isSelected == true) {
+            checkBoxButton.layer.backgroundColor = habit.color.cgColor
+            checkBoxButton.tintColor = AppCoolors.backgroundColor
+        } else {
+            checkBoxButton.layer.borderColor = habit.color.cgColor
+        }
+        
         layout()
     }
     
@@ -124,6 +157,7 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(habitNameLabel)
         contentView.addSubview(habitTimeLabel)
         contentView.addSubview(habitCounterLabel)
+        contentView.addSubview(checkBoxButton)
 
         NSLayoutConstraint.activate([
             habitNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Metric.habbitsCellectionViewCellInset),
@@ -134,6 +168,12 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
             
             habitTimeLabel.topAnchor.constraint(equalTo: habitNameLabel.bottomAnchor, constant: Metric.habbitsCellectionViewInnerHeaderInset),
             habitTimeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.habbitsCellectionViewCellInset),
+            
+            
+            checkBoxButton.heightAnchor.constraint(equalToConstant: Metric.checkBoxButtonSize),
+            checkBoxButton.widthAnchor.constraint(equalToConstant: Metric.checkBoxButtonSize),
+            checkBoxButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.checkBoxButtonTrailingAnchorInset),
+            checkBoxButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             habitCounterLabel.topAnchor.constraint(equalTo: habitTimeLabel.bottomAnchor, constant: Metric.habbitsCellectionViewInnerInset),
             habitCounterLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.habbitsCellectionViewCellInset),

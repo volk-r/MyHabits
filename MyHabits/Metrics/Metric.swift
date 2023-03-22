@@ -34,6 +34,8 @@ enum Metric {
     static let progressSideInset: CGFloat = 12
     static let progressBarBottomAnchorInset: CGFloat = 15
     static let progresslabelInset: CGFloat = 8
+    static let checkBoxButtonTrailingAnchorInset: CGFloat = 26
+    static let checkBoxButtonSize: CGFloat = 36
     
     // MARK: - HabitsCollectionViewHeader
     static let habbitsCellectionViewHeaderLabelInset: CGFloat = 14
