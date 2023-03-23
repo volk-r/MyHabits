@@ -11,6 +11,12 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
     
     private var todayProgress = HabitsStore.shared.todayProgress
     
+    private let habitsView = HabitsView()
+    
+    private var habit = Habit(name: "",
+                              date: UIDatePicker().date,
+                              color: AppCoolors.orange)
+    
     private var progressLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -85,11 +91,18 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
     }()
     
     @objc func toggleCheckboxSelection() {
+        guard habit.isAlreadyTakenToday == false else { return }
+        
         checkBoxButton.isSelected = !checkBoxButton.isSelected
         
         if (checkBoxButton.isSelected == true) {
             checkBoxButton.layer.backgroundColor = checkBoxButton.layer.borderColor
             checkBoxButton.tintColor = AppCoolors.backgroundColor
+            
+            HabitsStore.shared.track(habit)
+            // MARK: - reload data
+            // TODO: - reload data
+            habitCounterLabel.text = "Счетчик: \(habit.trackDates.count)"
         } else {
             checkBoxButton.layer.backgroundColor = AppCoolors.backgroundColor.cgColor
         }
@@ -107,18 +120,18 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
     }
     
     func setupCell(habit: Habit) {
+        self.habit = habit
         habitNameLabel.textColor = habit.color
         habitNameLabel.text = habit.name
         habitTimeLabel.text = habit.dateString
         habitCounterLabel.text = "Счетчик: \(habit.trackDates.count)"
-        // TODO: - кружок цветной
+        
         checkBoxButton.isSelected = habit.isAlreadyTakenToday
+        checkBoxButton.layer.borderColor = habit.color.cgColor
         
         if (checkBoxButton.isSelected == true) {
             checkBoxButton.layer.backgroundColor = habit.color.cgColor
             checkBoxButton.tintColor = AppCoolors.backgroundColor
-        } else {
-            checkBoxButton.layer.borderColor = habit.color.cgColor
         }
         
         layout()
