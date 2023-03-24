@@ -68,6 +68,9 @@ final class HabitViewController: UIViewController {
         let store = HabitsStore.shared
         store.habits.append(newHabit)
         
+        // MARK: - reload data
+        NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
+        
         dismiss(animated: true)
     }
     

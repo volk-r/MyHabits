@@ -10,9 +10,7 @@ import UIKit
 final class HabitsCollectionViewCell: UICollectionViewCell {
     
     private var todayProgress = HabitsStore.shared.todayProgress
-    
-    private let habitsView = HabitsView()
-    
+
     private var habit = Habit(name: "",
                               date: UIDatePicker().date,
                               color: AppCoolors.orange)
@@ -101,8 +99,7 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
             
             HabitsStore.shared.track(habit)
             // MARK: - reload data
-            // TODO: - reload data
-            habitCounterLabel.text = "Счетчик: \(habit.trackDates.count)"
+            NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
         } else {
             checkBoxButton.layer.backgroundColor = AppCoolors.backgroundColor.cgColor
         }
@@ -117,6 +114,17 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        checkBoxButton.tintColor = AppCoolors.backgroundColor
+        checkBoxButton.layer.backgroundColor = AppCoolors.backgroundColor.cgColor
+        
+        for subview in contentView.subviews {
+             subview.removeFromSuperview()
+        }
     }
     
     func setupCell(habit: Habit) {

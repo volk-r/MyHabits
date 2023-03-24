@@ -21,9 +21,14 @@ final class HabitsViewController: UIViewController {
         habitsView.addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
     }
     
-    override func viewWillLayoutSubviews () {
-        super.viewWillLayoutSubviews()
-        habitsView.habitsCollectionView.collectionViewLayout.invalidateLayout()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
+    }
+    
+    @objc func loadList(notification: NSNotification) {
+        habitsView.habitsCollectionView.reloadData()
     }
     
     @objc private func addAction () {
