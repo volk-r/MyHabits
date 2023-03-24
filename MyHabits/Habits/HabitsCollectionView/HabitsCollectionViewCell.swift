@@ -165,7 +165,6 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
             progressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.progressSideInset),
             
             progressValueLabel.topAnchor.constraint(equalTo: progressLabel.topAnchor),
-            progressValueLabel.leadingAnchor.constraint(equalTo: progressLabel.trailingAnchor, constant: Metric.progresslabelInset),
             progressValueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.progressSideInset),
             
             progressView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metric.progressSideInset),
