@@ -28,6 +28,9 @@
 		3C144B9F29BDE6C1004DFFE6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144B9E29BDE6C1004DFFE6 /* UIView+Extension.swift */; };
 		3C144BA129BDE7BA004DFFE6 /* HabitsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144BA029BDE7BA004DFFE6 /* HabitsCollectionViewCell.swift */; };
 		3C144BA429BE1588004DFFE6 /* HabitsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C144BA329BE1588004DFFE6 /* HabitsCollectionViewHeader.swift */; };
+		3C8A25DA29CF2D0500BBE276 /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A25D929CF2D0500BBE276 /* HabitDetailsViewController.swift */; };
+		3C8A25DD29CF2D7900BBE276 /* HabitDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A25DC29CF2D7900BBE276 /* HabitDetailsView.swift */; };
+		3C8A25DF29CF328400BBE276 /* HabitDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A25DE29CF328400BBE276 /* HabitDetailsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		3C144B9E29BDE6C1004DFFE6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		3C144BA029BDE7BA004DFFE6 /* HabitsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C144BA329BE1588004DFFE6 /* HabitsCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsCollectionViewHeader.swift; sourceTree = "<group>"; };
+		3C8A25D929CF2D0500BBE276 /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
+		3C8A25DC29CF2D7900BBE276 /* HabitDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsView.swift; sourceTree = "<group>"; };
+		3C8A25DE29CF328400BBE276 /* HabitDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 				3C144B9229B3BAF6004DFFE6 /* Metrics */,
 				3C144B8F29B3B90D004DFFE6 /* Models */,
 				3C144B8C29B3B333004DFFE6 /* Habits */,
+				3C8A25DB29CF2D1100BBE276 /* HabitDetails */,
 				3C144B9729B4A519004DFFE6 /* Habit */,
 				3C144B8729B3B14C004DFFE6 /* Info */,
 				3C144B8129B3843D004DFFE6 /* AppSettings */,
@@ -176,6 +183,16 @@
 			path = HabitsCollectionView;
 			sourceTree = "<group>";
 		};
+		3C8A25DB29CF2D1100BBE276 /* HabitDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3C8A25D929CF2D0500BBE276 /* HabitDetailsViewController.swift */,
+				3C8A25DC29CF2D7900BBE276 /* HabitDetailsView.swift */,
+				3C8A25DE29CF328400BBE276 /* HabitDetailsTableViewCell.swift */,
+			);
+			path = HabitDetails;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -254,7 +271,10 @@
 				3C144B9129B3BADE004DFFE6 /* Metric.swift in Sources */,
 				3C144B8B29B3B32D004DFFE6 /* HabitsView.swift in Sources */,
 				3C144B6829B3747A004DFFE6 /* AppDelegate.swift in Sources */,
+				3C8A25DF29CF328400BBE276 /* HabitDetailsTableViewCell.swift in Sources */,
+				3C8A25DA29CF2D0500BBE276 /* HabitDetailsViewController.swift in Sources */,
 				3C144BA429BE1588004DFFE6 /* HabitsCollectionViewHeader.swift in Sources */,
+				3C8A25DD29CF2D7900BBE276 /* HabitDetailsView.swift in Sources */,
 				3C144BA129BDE7BA004DFFE6 /* HabitsCollectionViewCell.swift in Sources */,
 				3C144B9429B4A4F4004DFFE6 /* HabitViewController.swift in Sources */,
 				3C144B8029B383FC004DFFE6 /* MainTabBarViewController.swift in Sources */,

@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol HabitsViewDelegzte: AnyObject {
+    func openHabitDetailsFromController(indexPath: IndexPath)
+}
+
 final class HabitsView: UIView {
+    
+    weak var habitsViewDelegzte: HabitsViewDelegzte?
     
     lazy var addButton: UIButton = {
         let button = UIButton()
@@ -92,6 +98,8 @@ extension HabitsView: UICollectionViewDataSource {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitsCollectionViewCell.identifier, for: indexPath) as! HabitsCollectionViewCell
         cell.setupCell(habit: HabitsStore.shared.habits[indexPath.item - 1])
+        cell.setIndexPath(indexPath)
+        cell.habitsCollectionViewCellDelegate = self
 
         return cell
     }
@@ -134,4 +142,11 @@ extension HabitsView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return Metric.habbitsCellectionViewMinimumInteritemSpacingForSection
     }
+}
+
+extension HabitsView: HabitsCollectionViewCellDelegate {
+    func openHabitDetails(indexPath: IndexPath) {
+        habitsViewDelegzte?.openHabitDetailsFromController(indexPath: indexPath)
+    }
+    
 }

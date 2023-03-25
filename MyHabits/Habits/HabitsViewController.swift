@@ -19,6 +19,8 @@ final class HabitsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         habitsView.addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
+        
+        habitsView.habitsViewDelegzte = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +39,14 @@ final class HabitsViewController: UIViewController {
         habbitController.modalPresentationStyle = .fullScreen
         self.navigationController?.present(habbitController, animated: true)
     }
-
+    
 }
 
+extension HabitsViewController: HabitsViewDelegzte {
+    func openHabitDetailsFromController(indexPath: IndexPath) {
+        let habit = HabitsStore.shared.habits[indexPath.row - 1]
+        let habitDetailsVC = HabitDetailsViewController(habit: habit)
+        self.navigationController?.pushViewController(habitDetailsVC, animated: true)
+    }
+    
+}

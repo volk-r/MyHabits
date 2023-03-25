@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HabitsCollectionViewCellDelegate: AnyObject {
+    func openHabitDetails(indexPath: IndexPath)
+}
+
 final class HabitsCollectionViewCell: UICollectionViewCell {
     
     private var todayProgress = HabitsStore.shared.todayProgress
@@ -14,6 +18,10 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
     private var habit = Habit(name: "",
                               date: UIDatePicker().date,
                               color: AppCoolors.orange)
+    
+    weak var habitsCollectionViewCellDelegate: HabitsCollectionViewCellDelegate?
+    
+    private var indexPathCell = IndexPath()
     
     private var progressLabel: UILabel = {
         let label = UILabel()
@@ -110,6 +118,17 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         generalSettings()
         
         checkBoxButton.addTarget(self, action: #selector(toggleCheckboxSelection), for: .touchUpInside)
+        
+        addGesture()
+    }
+    
+    private func addGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        contentView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapAction() {
+        habitsCollectionViewCellDelegate?.openHabitDetails(indexPath: indexPathCell)
     }
     
     required init?(coder: NSCoder) {
@@ -125,6 +144,10 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         for subview in contentView.subviews {
              subview.removeFromSuperview()
         }
+    }
+    
+    func setIndexPath(_ indexPath: IndexPath) {
+        indexPathCell = indexPath
     }
     
     func setupCell(habit: Habit) {

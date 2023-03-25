@@ -20,6 +20,8 @@ class MainTabBarViewController: UITabBarController {
     private func setupCotrollers() {
         let navigationControllerHabbits = UINavigationController(rootViewController: habbitsVC)
         let navigationControllerInfo = UINavigationController(rootViewController: infoVC)
+        
+        navigationControllerHabbits.navigationBar.tintColor = AppCoolors.purple
         navigationControllerHabbits.navigationBar.isHidden = true
         
         UITabBar.appearance().tintColor = AppCoolors.purple
