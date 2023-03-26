@@ -9,11 +9,10 @@ import UIKit
 
 protocol HabitsCollectionViewCellDelegate: AnyObject {
     func openHabitDetails(indexPath: IndexPath)
+    func habitsCollectionViewReloadData()
 }
 
 final class HabitsCollectionViewCell: UICollectionViewCell {
-    
-    private var todayProgress = HabitsStore.shared.todayProgress
 
     private var habit = Habit(name: "",
                               date: UIDatePicker().date,
@@ -29,7 +28,6 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         label.font = AppFontSettings.footnoteStatus
         label.textColor = AppFontSettings.footnoteStatusColor
         label.text = "Все получится!"
-        
         return label
     }()
     
@@ -38,10 +36,6 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = AppFontSettings.footnoteStatus
         label.textColor = AppFontSettings.footnoteStatusColor
-
-        let todayProgress = self.todayProgress * 100
-        label.text = "\(todayProgress)%"
-        
         return label
     }()
     
@@ -50,8 +44,6 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.progressTintColor = AppCoolors.purple
         progressView.trackTintColor = AppCoolors.gray2
-        progressView.progress = self.todayProgress
-        
         return progressView
     }()
     
@@ -107,7 +99,7 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
             
             HabitsStore.shared.track(habit)
             // MARK: - reload data
-            NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
+            habitsCollectionViewCellDelegate?.habitsCollectionViewReloadData()
         } else {
             checkBoxButton.layer.backgroundColor = AppCoolors.backgroundColor.cgColor
         }
@@ -174,7 +166,10 @@ final class HabitsCollectionViewCell: UICollectionViewCell {
         layer.masksToBounds = true
     }
     
-    func setupProgressCell() {
+    func setupProgressCell(with progress: Float) {
+        progressValueLabel.text = "\(progress * 100)%"
+        progressView.setProgress(progress, animated: true)
+        
         layoutProgress()
     }
     

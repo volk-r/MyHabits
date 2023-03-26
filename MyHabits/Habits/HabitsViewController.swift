@@ -25,11 +25,6 @@ final class HabitsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(loadList(notification:)), name: NSNotification.Name(rawValue: "load"), object: nil)
-    }
-    
-    @objc func loadList(notification: NSNotification) {
         habitsView.habitsCollectionView.reloadData()
     }
     

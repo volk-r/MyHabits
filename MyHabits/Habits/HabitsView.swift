@@ -91,7 +91,7 @@ extension HabitsView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if (indexPath.item == 0) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HabitsCollectionViewCell.identifier, for: indexPath) as! HabitsCollectionViewCell
-            cell.setupProgressCell()
+            cell.setupProgressCell(with: HabitsStore.shared.todayProgress)
 
             return cell
         }
@@ -145,6 +145,10 @@ extension HabitsView: UICollectionViewDelegateFlowLayout {
 }
 
 extension HabitsView: HabitsCollectionViewCellDelegate {
+    func habitsCollectionViewReloadData() {
+        habitsCollectionView.reloadData()
+    }
+    
     func openHabitDetails(indexPath: IndexPath) {
         habitsViewDelegzte?.openHabitDetailsFromController(indexPath: indexPath)
     }

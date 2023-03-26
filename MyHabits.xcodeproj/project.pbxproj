@@ -93,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				3C144B8429B38F45004DFFE6 /* Extensions */,
-				3C144B7B29B379EE004DFFE6 /* HabitsStore.swift */,
 				3C144B9229B3BAF6004DFFE6 /* Metrics */,
 				3C144B8F29B3B90D004DFFE6 /* Models */,
 				3C144B8C29B3B333004DFFE6 /* Habits */,
@@ -152,6 +151,7 @@
 		3C144B8F29B3B90D004DFFE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3C144B7B29B379EE004DFFE6 /* HabitsStore.swift */,
 				3C144B8D29B3B7F8004DFFE6 /* InfoViewText.swift */,
 			);
 			path = Models;
