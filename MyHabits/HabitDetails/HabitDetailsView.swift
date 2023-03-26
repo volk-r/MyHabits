@@ -9,9 +9,7 @@ import UIKit
 
 final class HabitDetailsView: UIView {
     
-    private var habit = Habit(name: "",
-                              date: UIDatePicker().date,
-                              color: AppCoolors.orange)
+    private var habit: Habit!
     
     private lazy var tableView: UITableView = {
         var tableView = UITableView(frame: .zero, style: .grouped)
@@ -61,13 +59,19 @@ extension HabitDetailsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HabitDetailsTableViewCell.identifier, for: indexPath) as! HabitDetailsTableViewCell
         
-        let index = HabitsStore.shared.dates.count - indexPath.row - 1
-        let date = HabitsStore.shared.trackDateString(forIndex: index) ?? "unknown"
-        let isTrackedIn = HabitsStore.shared.habit(habit, isTrackedIn: habit.date)
-        cell.setupCell(date: date, isTrackedIn: isTrackedIn)
+        let date = HabitsStore.shared.dates[indexPath.row]
+        
+        if HabitsStore.shared.habit(habit, isTrackedIn: date) {
+            cell.accessoryType = .checkmark
+        }
+        
+        let dateText = HabitsStore.shared.trackDateString(forIndex: indexPath.row)
+        cell.textLabel?.text = dateText
         
         return cell
     }
+    
+    // TODO: table header needed
     
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        guard section == 0 else { return nil }

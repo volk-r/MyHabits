@@ -9,7 +9,10 @@ import UIKit
 
 final class HabitDetailsViewController: UIViewController {
     
+    private let habit: Habit!
+    
     init(habit: Habit) {
+        self.habit = habit
         super.init(nibName: nil, bundle: nil)
         view = HabitDetailsView(habit: habit)
     }
@@ -23,6 +26,7 @@ final class HabitDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
         makeBarItem()
     }
     
@@ -32,27 +36,22 @@ final class HabitDetailsViewController: UIViewController {
     }
     
     private func makeBarItem() {
-        navigationItem.title = "Сделать зарядку"
-        self.navigationController?.navigationBar.isHidden = false
+        navigationItem.title = habit.name
         
-        let rigthBarItem = UIBarButtonItem(title: "Править", style: .plain, target: self, action: #selector(changelAction))
+        let rigthBarItem = UIBarButtonItem(title: "Править", style: .plain, target: self, action: #selector(changeHabit(_:)))
         navigationItem.rightBarButtonItem = rigthBarItem
+        
+        // TODO: - back button needed
+//        let rigthBarItem = UIBarButtonItem(title: "Сегодня", style: .plain, target: self, action: #selector(changeHabit(_:)))
+//        navigationItem.rightBarButtonItem = rigthBarItem
     }
     
-    @objc private func changelAction() {
+    @objc private func changeHabit(_ sender: UIBarButtonItem) {
         print("change habit")
-//        guard let habitName = habitView.nameTextField.text, habitName != "" else { print("save failed"); return }
-//
-//        let newHabit = Habit(name: habitName,
-//                             date: habitView.datePicker.date,
-//                             color: habitView.colorWell.selectedColor ?? AppCoolors.orange)
-//        let store = HabitsStore.shared
-//        store.habits.append(newHabit)
-//
-//        // MARK: - reload data
-//        NotificationCenter.default.post(name: NSNotification.Name("load"), object: nil)
-        
-        self.navigationController?.popViewController(animated: true)
+        let habitVC = HabitViewController()
+        habitVC.habitState = .edit
+        habitVC.setupHabitData(habit: habit)
+        self.navigationController?.pushViewController(habitVC, animated: true)
     }
 
 }

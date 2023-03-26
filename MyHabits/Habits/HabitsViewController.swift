@@ -30,6 +30,7 @@ final class HabitsViewController: UIViewController {
     
     @objc private func addAction () {
         let habbitVC = HabitViewController()
+        habbitVC.habitState = .create
         let habbitController = UINavigationController(rootViewController: habbitVC)
         habbitController.modalPresentationStyle = .fullScreen
         self.navigationController?.present(habbitController, animated: true)

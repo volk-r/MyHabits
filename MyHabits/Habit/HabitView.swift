@@ -108,6 +108,15 @@ final class HabitView: UIView {
         
         return datePicker
     }()
+    
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Удалить привычку", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.isHidden = true
+        return button
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -131,6 +140,7 @@ final class HabitView: UIView {
         contentView.addSubview(timeDescriptionLabel)
         contentView.addSubview(timeDescriptionValueLabel)
         contentView.addSubview(datePicker)
+        contentView.addSubview(deleteButton)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -175,6 +185,9 @@ final class HabitView: UIView {
             datePicker.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             datePicker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metric.mainInset),
             datePicker.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: Metric.mainInset),
+            
+            deleteButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            deleteButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Metric.mainInset),
         ])
     }
     
