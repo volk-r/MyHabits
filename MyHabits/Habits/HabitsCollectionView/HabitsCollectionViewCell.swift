@@ -14,9 +14,7 @@ protocol HabitsCollectionViewCellDelegate: AnyObject {
 
 final class HabitsCollectionViewCell: UICollectionViewCell {
 
-    private var habit = Habit(name: "",
-                              date: UIDatePicker().date,
-                              color: AppCoolors.orange)
+    private var habit: Habit!
     
     weak var habitsCollectionViewCellDelegate: HabitsCollectionViewCellDelegate?
     

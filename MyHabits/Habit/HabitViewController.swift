@@ -51,9 +51,11 @@ final class HabitViewController: UIViewController {
         
         let rigthBarItem = UIBarButtonItem(title: "Сохранить", style: .done, target: self, action: #selector(saveAction))
         navigationItem.rightBarButtonItem = rigthBarItem
+        navigationItem.rightBarButtonItem?.tintColor = AppCoolors.purple
 
         let leftBarItem = UIBarButtonItem(title: "Отменить", style: .plain, target: self, action: #selector(cancelAction))
         navigationItem.leftBarButtonItem = leftBarItem
+        navigationItem.leftBarButtonItem?.tintColor = AppCoolors.purple
     }
     
     @objc private func saveAction() {
