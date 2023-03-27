@@ -47,7 +47,7 @@ final class HabitDetailsView: UIView {
 
 extension HabitDetailsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        UITableView.automaticDimension
+        return 40
     }
 }
 
@@ -71,12 +71,8 @@ extension HabitDetailsView: UITableViewDataSource {
         return cell
     }
     
-    // TODO: table header needed
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard section == 0 else { return nil }
-//
-//        return ProfileHeaderView()
-//    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       return "Активность"
+    }
     
 }
