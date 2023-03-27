@@ -50,12 +50,12 @@ final class HabitViewController: UIViewController {
     
     @objc func deleteHabitAction() {
         print("deleteHabitAction")
-        let vc = UIAlertController(title: "Удалит привычку", message: "Вы хотите удалить привычку \"\(habitView.nameTextField.text!)\"", preferredStyle: .alert)
+        let vc = UIAlertController(title: "Удалить привычку", message: "Вы хотите удалить привычку \"\(habitView.nameTextField.text!)\"", preferredStyle: .alert)
         vc.addAction(UIAlertAction(title: "Отмена", style: .cancel))
         vc.addAction(UIAlertAction(title: "Удалить", style: .destructive){ _ in
             HabitsStore.shared.habits.removeAll{ $0 == self.habit }
             let vcs = self.navigationController!.viewControllers
-            self.navigationController?.popToViewController(vcs[vcs.count - 2], animated: true)
+            self.navigationController?.popToViewController(vcs[vcs.count - 3], animated: true)
         })
         
         self.present(vc, animated: true)

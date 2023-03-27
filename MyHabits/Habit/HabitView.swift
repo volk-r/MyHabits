@@ -140,7 +140,7 @@ final class HabitView: UIView {
         contentView.addSubview(timeDescriptionLabel)
         contentView.addSubview(timeDescriptionValueLabel)
         contentView.addSubview(datePicker)
-        contentView.addSubview(deleteButton)
+        addSubview(deleteButton)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
