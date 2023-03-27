@@ -41,9 +41,9 @@ final class HabitDetailsViewController: UIViewController {
         let rigthBarItem = UIBarButtonItem(title: "Править", style: .plain, target: self, action: #selector(changeHabit(_:)))
         navigationItem.rightBarButtonItem = rigthBarItem
         
-        // TODO: - back button needed
-//        let rigthBarItem = UIBarButtonItem(title: "Сегодня", style: .plain, target: self, action: #selector(changeHabit(_:)))
-//        navigationItem.rightBarButtonItem = rigthBarItem
+        let backButton = UIBarButtonItem()
+        backButton.title = "Сегодня"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     @objc private func changeHabit(_ sender: UIBarButtonItem) {
